@@ -11,3 +11,25 @@
   opacity: 0.2;
   background: #439FE0;
 }
+
+.ssslack-buttons-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100px;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  padding-top: 32px;
+}
+
+.ssslack-buttons-container a {
+  display: inline-block;
+  font-size: 22px;
+  background: #88DC4C;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+  padding: 8px 12px;
+}
