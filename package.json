@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "browserify src/content.js > dist/content.js",
-    "watch": "watchify src/content.js -o dist/content.js -v",
+    "watch": "watchify src/content.js -o dist/content.js -v &\\\n watchify src/background.js -o dist/background.js -v \\\n wait",
     "test": "standard src/**/*.js"
   },
   "engines": {

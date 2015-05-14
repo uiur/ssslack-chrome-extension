@@ -21,8 +21,6 @@ function start () {
     div.className = 'ssslack'
 
     div.addEventListener('click', function (e) {
-      var messageElement = e.target.parentNode
-
       if (div.classList.contains('ssslack-selected')) {
         div.classList.remove('ssslack-selected')
       } else {
@@ -40,10 +38,6 @@ function start () {
   })
 }
 
-if ((/slack\.com/).test(window.location.hostname)) {
-  domready(function () {
-    setTimeout(function () {
-      start()
-    }, 5000)
-  })
-}
+domready(function () {
+  start()
+})

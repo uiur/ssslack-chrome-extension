@@ -7,14 +7,25 @@
     "16": "images/icon-16.png",
     "128": "images/icon-128.png"
   },
+  "background": {
+    "scripts": ["dist/background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "tabs",
+    "<all_urls>"
+  ],
+  "page_action": {
+    "default_icon": {
+      "16": "images/icon-16.png"
+    }
+  },
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js": [
-        "dist/content.js"
+        "https://*.slack.com/*"
       ],
       "css": [
         "css/content.css"
