@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .ssslack-overlay {
   position: absolute;
   width: 100%;
@@ -32,4 +36,9 @@
   font-weight: bold;
   color: white;
   padding: 8px 12px;
+}
+
+.ssslack-buttons-container .ssslack-cancel-button {
+  background: none;
+  color: #fafafa;
 }

@@ -9966,7 +9966,17 @@ function start () {
     })
   })
 
+  var cancelButton = document.createElement('a')
+  cancelButton.innerHTML = 'Cancel'
+  cancelButton.className = 'ssslack-cancel-button'
+
+  cancelButton.addEventListener('click', function (e) {
+    e.preventDefault()
+    finish()
+  })
+
   container.appendChild(button)
+  container.appendChild(cancelButton)
   document.body.appendChild(container)
 }
 
