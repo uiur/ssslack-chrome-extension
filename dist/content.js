@@ -9928,7 +9928,7 @@ function start () {
   var elements = document.querySelectorAll('.message')
   Array.prototype.slice.call(elements).forEach(function (messageElement) {
     var div = document.createElement('div')
-    div.className = 'ssslack'
+    div.className = 'ssslack ssslack-overlay'
 
     div.addEventListener('click', function (e) {
       if (div.classList.contains('ssslack-selected')) {
@@ -9946,7 +9946,7 @@ function start () {
   })
 
   var container = document.createElement('div')
-  container.className = 'ssslack-buttons-container'
+  container.className = 'ssslack ssslack-buttons-container'
 
   var button = document.createElement('a')
   button.innerHTML = 'Post'
@@ -9958,11 +9958,23 @@ function start () {
 
     var Snippet = Parse.Object.extend('Snippet')
     var snippet = new Snippet()
-    snippet.save({ messages: selectedMessages() })
+    snippet.save({ messages: selectedMessages() }, {
+      success: function (newSnippet) {
+        window.open('https://ssslack.parseapp.com/' + newSnippet.id)
+        finish()
+      }
+    })
   })
 
   container.appendChild(button)
   document.body.appendChild(container)
+}
+
+function finish () {
+  var elements = document.querySelectorAll('.ssslack')
+  Array.prototype.slice.call(elements).forEach(function (node) {
+    node.parentNode.removeChild(node)
+  })
 }
 
 domready(function () {
