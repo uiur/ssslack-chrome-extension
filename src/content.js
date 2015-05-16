@@ -14,14 +14,9 @@ function selectedMessages () {
   })
 }
 
-function logText () {
-  return selectedMessages().map(function (message) {
-    return message.sender + ': ' + message.content
-  }).join('\n')
-}
-
 function channelName () {
-  return (/^\/(?:messages|archives)\/([^\/]+)/).exec(window.location.pathname)[1]
+  var pathname = window.location.pathname
+  return (/^\/(?:messages|archives)\/([^\/]+)/).exec(pathname)[1]
 }
 
 function start () {
@@ -36,10 +31,6 @@ function start () {
       } else {
         div.classList.add('ssslack-selected')
       }
-
-      var text = logText()
-
-      copy(text)
     })
 
     messageElement.appendChild(div)
@@ -63,7 +54,9 @@ function start () {
       channel: channelName()
     }, {
       success: function (newSnippet) {
-        window.open('https://ssslack.parseapp.com/' + newSnippet.id)
+        var url = 'https://ssslack.parseapp.com/' + newSnippet.id
+        copy(url)
+        window.open(url)
         finish()
       }
     })
