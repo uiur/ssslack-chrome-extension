@@ -24587,9 +24587,32 @@ function hasOwnProperty(obj, prop) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./support/isBuffer":63,"_process":49,"inherits":47}],65:[function(require,module,exports){
-var domready = require('domready')
 var sanitize = require('sanitize-html')
+module.exports = function scrapeMessage (element) {
+  var imageElement = element.querySelector('.member_image')
+
+  var imageUrl = null
+  if (imageElement) {
+    imageUrl = imageElement.style['background-image'].replace(/(^url\()|(\))$/g, '')
+  }
+
+  return {
+    content: content(element),
+    sender: element.querySelector('.message_sender').textContent.trim(),
+    timestamp: element.querySelector('.timestamp').textContent.trim(),
+    imageUrl: imageUrl
+  }
+}
+
+function content (element) {
+  var html = element.querySelector('.message_content').innerHTML.trim()
+  return sanitize(html)
+}
+
+},{"sanitize-html":4}],66:[function(require,module,exports){
+var domready = require('domready')
 var copy = require('chrome-clip-copy')
+var scrapeMessage = require('./content/scrape-message.js')
 
 var Parse = require('parse').Parse
 Parse.initialize('d0AdLsVEqFJsTX9XTuoz3YXluUVZ6mbRdOWM7ea6', 'ywwkjYyVSODKbZkH0G5Y4Ly7IqwWfahsWOPYfrHI')
@@ -24599,30 +24622,8 @@ function selectedMessages () {
 
   return Array.prototype.slice.call(elements).map(function (el) {
     var messageElement = el.parentNode
-
     return scrapeMessage(messageElement)
   })
-}
-
-function scrapeMessage (messageElement) {
-  var imageElement = messageElement.querySelector('.member_image')
-
-  var imageUrl = null
-  if (imageElement) {
-    imageUrl = imageElement.style['background-image'].replace(/(^url\()|(\))$/g, '')
-  }
-
-  return {
-    content: messageContent(messageElement),
-    sender: messageElement.querySelector('.message_sender').textContent.trim(),
-    timestamp: messageElement.querySelector('.timestamp').textContent.trim(),
-    imageUrl: imageUrl
-  }
-}
-
-function messageContent (messageElement) {
-  var html = messageElement.querySelector('.message_content').innerHTML.trim()
-  return sanitize(html)
 }
 
 function logText () {
@@ -24705,4 +24706,4 @@ domready(function () {
   start()
 })
 
-},{"chrome-clip-copy":1,"domready":2,"parse":3,"sanitize-html":4}]},{},[65]);
+},{"./content/scrape-message.js":65,"chrome-clip-copy":1,"domready":2,"parse":3}]},{},[66]);

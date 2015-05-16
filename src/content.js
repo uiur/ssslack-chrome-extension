@@ -1,6 +1,6 @@
 var domready = require('domready')
-var sanitize = require('sanitize-html')
 var copy = require('chrome-clip-copy')
+var scrapeMessage = require('./content/scrape-message.js')
 
 var Parse = require('parse').Parse
 Parse.initialize('d0AdLsVEqFJsTX9XTuoz3YXluUVZ6mbRdOWM7ea6', 'ywwkjYyVSODKbZkH0G5Y4Ly7IqwWfahsWOPYfrHI')
@@ -10,30 +10,8 @@ function selectedMessages () {
 
   return Array.prototype.slice.call(elements).map(function (el) {
     var messageElement = el.parentNode
-
     return scrapeMessage(messageElement)
   })
-}
-
-function scrapeMessage (messageElement) {
-  var imageElement = messageElement.querySelector('.member_image')
-
-  var imageUrl = null
-  if (imageElement) {
-    imageUrl = imageElement.style['background-image'].replace(/(^url\()|(\))$/g, '')
-  }
-
-  return {
-    content: messageContent(messageElement),
-    sender: messageElement.querySelector('.message_sender').textContent.trim(),
-    timestamp: messageElement.querySelector('.timestamp').textContent.trim(),
-    imageUrl: imageUrl
-  }
-}
-
-function messageContent (messageElement) {
-  var html = messageElement.querySelector('.message_content').innerHTML.trim()
-  return sanitize(html)
 }
 
 function logText () {
