@@ -2,9 +2,9 @@
   "name": "ssslack",
   "version": "0.0.0",
   "dependencies": {
+    "chrome-clip-copy": "^1.0.0",
     "parse": "^1.4.2",
-    "sanitize-html": "^1.6.1",
-    "chrome-clip-copy": "uiureo/chrome-clip-copy"
+    "sanitize-html": "^1.6.1"
   },
   "devDependencies": {
     "browserify": "^9.0.8",
