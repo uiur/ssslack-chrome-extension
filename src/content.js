@@ -10,20 +10,25 @@ function selectedMessages () {
 
   return Array.prototype.slice.call(elements).map(function (el) {
     var messageElement = el.parentNode
-    var imageElement = messageElement.querySelector('.member_image')
 
-    var imageUrl = null
-    if (imageElement) {
-      imageUrl = imageElement.style['background-image'].replace(/(^url\()|(\))$/g, '')
-    }
-
-    return {
-      content: messageContent(messageElement),
-      sender: messageElement.querySelector('.message_sender').textContent.trim(),
-      timestamp: messageElement.querySelector('.timestamp').textContent.trim(),
-      imageUrl: imageUrl
-    }
+    return scrapeMessage(messageElement)
   })
+}
+
+function scrapeMessage (messageElement) {
+  var imageElement = messageElement.querySelector('.member_image')
+
+  var imageUrl = null
+  if (imageElement) {
+    imageUrl = imageElement.style['background-image'].replace(/(^url\()|(\))$/g, '')
+  }
+
+  return {
+    content: messageContent(messageElement),
+    sender: messageElement.querySelector('.message_sender').textContent.trim(),
+    timestamp: messageElement.querySelector('.timestamp').textContent.trim(),
+    imageUrl: imageUrl
+  }
 }
 
 function messageContent (messageElement) {
@@ -35,6 +40,10 @@ function logText () {
   return selectedMessages().map(function (message) {
     return message.sender + ': ' + message.content
   }).join('\n')
+}
+
+function channelName () {
+  return (/^\/(?:messages|archives)\/([^\/]+)/).exec(window.location.pathname)[1]
 }
 
 function start () {
@@ -71,7 +80,10 @@ function start () {
 
     var Snippet = Parse.Object.extend('Snippet')
     var snippet = new Snippet()
-    snippet.save({ messages: selectedMessages() }, {
+    snippet.save({
+      messages: selectedMessages(),
+      channel: channelName()
+    }, {
       success: function (newSnippet) {
         window.open('https://ssslack.parseapp.com/' + newSnippet.id)
         finish()
