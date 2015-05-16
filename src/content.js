@@ -1,6 +1,6 @@
 var domready = require('domready')
 var sanitize = require('sanitize-html')
-var copy = require('./chrome-clip-copy.js')
+var copy = require('chrome-clip-copy')
 
 var Parse = require('parse').Parse
 Parse.initialize('d0AdLsVEqFJsTX9XTuoz3YXluUVZ6mbRdOWM7ea6', 'ywwkjYyVSODKbZkH0G5Y4Ly7IqwWfahsWOPYfrHI')

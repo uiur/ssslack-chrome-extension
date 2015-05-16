@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "parse": "^1.4.2",
-    "sanitize-html": "^1.6.1"
+    "sanitize-html": "^1.6.1",
+    "chrome-clip-copy": "uiureo/chrome-clip-copy"
   },
   "devDependencies": {
     "browserify": "^9.0.8",
