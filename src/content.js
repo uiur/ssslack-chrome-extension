@@ -19,6 +19,14 @@ function channelName () {
   return (/^\/(?:messages|archives)\/([^\/]+)/).exec(pathname)[1]
 }
 
+function teamName () {
+  return document.querySelector('#header_team_name, #team_name').textContent.trim()
+}
+
+function teamId (argument) {
+  return (/^(.+)\.slack\.com$/).exec(window.location.hostname)[1]
+}
+
 function start () {
   var elements = document.querySelectorAll('.message')
   Array.prototype.slice.call(elements).forEach(function (messageElement) {
@@ -51,7 +59,9 @@ function start () {
     var snippet = new Snippet()
     snippet.save({
       messages: selectedMessages(),
-      channel: channelName()
+      channel: channelName(),
+      team: teamName(),
+      team_id: teamId()
     }, {
       success: function (newSnippet) {
         var url = 'https://ssslack.parseapp.com/' + newSnippet.id
