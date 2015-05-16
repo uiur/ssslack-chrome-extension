@@ -1,5 +1,7 @@
 var domready = require('domready')
+var sanitize = require('sanitize-html')
 var copy = require('./chrome-clip-copy.js')
+
 var Parse = require('parse').Parse
 Parse.initialize('d0AdLsVEqFJsTX9XTuoz3YXluUVZ6mbRdOWM7ea6', 'ywwkjYyVSODKbZkH0G5Y4Ly7IqwWfahsWOPYfrHI')
 
@@ -16,12 +18,17 @@ function selectedMessages () {
     }
 
     return {
-      content: messageElement.querySelector('.message_content').textContent.trim(),
+      content: messageContent(messageElement),
       sender: messageElement.querySelector('.message_sender').textContent.trim(),
       timestamp: messageElement.querySelector('.timestamp').textContent.trim(),
       imageUrl: imageUrl
     }
   })
+}
+
+function messageContent (messageElement) {
+  var html = messageElement.querySelector('.message_content').innerHTML.trim()
+  return sanitize(html)
 }
 
 function logText () {
