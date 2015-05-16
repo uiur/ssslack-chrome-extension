@@ -1,4 +1,6 @@
 # ssslack-chrome-extension
+[![Build Status](https://travis-ci.org/uiureo/ssslack-chrome-extension.svg?branch=master)](https://travis-ci.org/uiureo/ssslack-chrome-extension)
+
 Work In Progress.
 
 ssslack is a service to share your slack logs.
