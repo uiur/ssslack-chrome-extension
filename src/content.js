@@ -60,10 +60,15 @@ function start () {
     e.preventDefault()
     e.stopPropagation()
 
+    var messages = selectedMessages()
+    if (messages.length === 0) {
+      return
+    }
+
     var Snippet = Parse.Object.extend('Snippet')
     var snippet = new Snippet()
     snippet.save({
-      messages: selectedMessages(),
+      messages: messages,
       channel: channelName(),
       team: teamName(),
       team_id: teamId()
