@@ -5,7 +5,10 @@
   "description": "",
   "icons": {
     "16": "images/icon-16.png",
-    "128": "images/icon-128.png"
+    "32": "images/icon-32.png",
+    "64": "images/icon-64.png",
+    "128": "images/icon-128.png",
+    "256": "images/icon-256.png"
   },
   "background": {
     "scripts": ["dist/background.js"],
@@ -19,7 +22,8 @@
   ],
   "page_action": {
     "default_icon": {
-      "16": "images/icon-16.png"
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
     }
   },
   "content_scripts": [
