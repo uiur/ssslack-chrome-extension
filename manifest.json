@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "",
+  "author": "Kazato Sugimoto",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
