@@ -20,6 +20,9 @@ Click here and open in archives. Trigger this extension in archives.
 [![Gyazo](https://i.gyazo.com/7bcb1278564422687f70f7973d29f4f2.gif)](https://gyazo.com/7bcb1278564422687f70f7973d29f4f2)
 
 ## Install
+https://chrome.google.com/webstore/detail/ssslack/fibjgioojhpoiahdafiohlckbpanllgg
+
+## Develop
 1. Clone this repo
 2. Build
 3. Drag & Drop the folder into `chrome://extensions` in Developer mode
@@ -32,7 +35,7 @@ npm run build
 ```
 
 ## Links
-https://github.com/uiureo/ssslack-server
+https://github.com/uiureo/ssslack
 
 ## License
 MIT
