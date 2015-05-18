@@ -4,12 +4,12 @@
   "dependencies": {
     "chrome-clip-copy": "^1.0.0",
     "dompurify": "^0.6.3",
+    "domready": "^1.0.7",
     "object-assign": "^2.0.0",
     "parse": "^1.4.2"
   },
   "devDependencies": {
     "browserify": "^9.0.8",
-    "domready": "^1.0.7",
     "standard": "^3.7.0",
     "watchify": "^3.2.1"
   },
