@@ -54,9 +54,8 @@ function start () {
   container.className = 'ssslack ssslack-buttons-container'
 
   var button = document.createElement('a')
-  button.innerHTML = 'Post'
-  button.setAttribute('href', 'https://gist.github.com/')
-  button.setAttribute('target', '_blank')
+  button.innerHTML = 'Post to ssslack'
+  button.className = 'ssslack-submit-button'
   button.addEventListener('click', function (e) {
     e.preventDefault()
     e.stopPropagation()
@@ -79,7 +78,7 @@ function start () {
   })
 
   var cancelButton = document.createElement('a')
-  cancelButton.innerHTML = 'Cancel'
+  cancelButton.innerHTML = '×'
   cancelButton.className = 'ssslack-cancel-button'
 
   cancelButton.addEventListener('click', function (e) {

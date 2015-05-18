@@ -18,27 +18,55 @@
 
 .ssslack-buttons-container {
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 8px;
+  right: 8px;
+
+  padding-top: 32px;
   width: 200px;
   height: 100px;
   z-index: 10000;
-  background: rgba(0, 0, 0, 0.9);
+
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
   text-align: center;
-  padding-top: 32px;
 }
 
 .ssslack-buttons-container a {
   display: inline-block;
-  font-size: 22px;
-  background: #88DC4C;
+  padding: 8px 12px;
+
+  font-size: 18px;
   border-radius: 4px;
   font-weight: bold;
   color: white;
-  padding: 8px 12px;
+}
+
+.ssslack-buttons-container a:link,
+.ssslack-buttons-container a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.ssslack-buttons-container .ssslack-submit-button {
+  width: 180px;
+
+  background: rgb(51, 177, 124);
+}
+
+.ssslack-buttons-container .ssslack-submit-button:hover {
+  background: rgb(55, 193, 135);
 }
 
 .ssslack-buttons-container .ssslack-cancel-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: auto;
+
+  display: inline-block;
+
+  color: #ddd;
   background: none;
-  color: #fafafa;
 }
