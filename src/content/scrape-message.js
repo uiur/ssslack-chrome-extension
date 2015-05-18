@@ -1,4 +1,5 @@
-var sanitize = require('sanitize-html')
+var purify = require('dompurify')
+
 module.exports = function scrapeMessage (element) {
   var imageElement = element.querySelector('.member_image')
 
@@ -17,5 +18,10 @@ module.exports = function scrapeMessage (element) {
 
 function content (element) {
   var html = element.querySelector('.message_content').innerHTML.trim()
-  return sanitize(html)
+
+  return purify.sanitize(html, {
+    ALLOWED_TAGS: ['a'],
+    ALLOWED_ATTR: ['href'],
+    ALLOW_DATA_ATTR: false
+  })
 }
