@@ -1,11 +1,23 @@
 # ssslack-chrome-extension
 [![Build Status](https://travis-ci.org/uiureo/ssslack-chrome-extension.svg?branch=master)](https://travis-ci.org/uiureo/ssslack-chrome-extension)
 
-Work In Progress.
+Currently in **beta**.
 
 ssslack is a service to share your slack logs.
 
 This service is heavily inspired by [iiirc](http://iiirc.org/).
+
+## How to use
+You can use it in `/archives` and `/messages`
+
+[![Gyazo](https://i.gyazo.com/e297b55d998e1cc55c551c18d4fd44c3.gif)](https://gyazo.com/e297b55d998e1cc55c551c18d4fd44c3)
+
+### From native apps
+Click here and open in archives. Trigger this extension in archives.
+
+[![Gyazo](https://i.gyazo.com/376a9cd8c98a52b2f360825425bc64ae.png)](https://gyazo.com/376a9cd8c98a52b2f360825425bc64ae)
+
+[![Gyazo](https://i.gyazo.com/7bcb1278564422687f70f7973d29f4f2.gif)](https://gyazo.com/7bcb1278564422687f70f7973d29f4f2)
 
 ## Install
 1. Clone this repo
@@ -19,11 +31,8 @@ npm install
 npm run build
 ```
 
-
-## TODO
-- Better UX
-- Publish this extension
-- List feature
-
 ## Links
 https://github.com/uiureo/ssslack-server
+
+## License
+MIT
