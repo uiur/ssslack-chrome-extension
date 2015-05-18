@@ -33,7 +33,7 @@ function teamId (argument) {
   return (/^(.+)\.slack\.com$/).exec(window.location.hostname)[1]
 }
 
-function start () {
+function setupOverlays () {
   var elements = document.querySelectorAll('.message')
   Array.prototype.slice.call(elements).forEach(function (messageElement) {
     var div = document.createElement('div')
@@ -49,6 +49,10 @@ function start () {
 
     messageElement.appendChild(div)
   })
+}
+
+function start () {
+  setupOverlays()
 
   var container = document.createElement('div')
   container.className = 'ssslack ssslack-buttons-container'
