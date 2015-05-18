@@ -1,16 +1,22 @@
 var domready = require('domready')
 var copy = require('chrome-clip-copy')
 var scrapeMessage = require('./content/scrape-message.js')
+var userIconMap = require('./content/user-icon-map.js')
+
+var assign = require('object-assign')
 
 var Parse = require('parse').Parse
 Parse.initialize('d0AdLsVEqFJsTX9XTuoz3YXluUVZ6mbRdOWM7ea6', 'ywwkjYyVSODKbZkH0G5Y4Ly7IqwWfahsWOPYfrHI')
 
 function selectedMessages () {
   var elements = document.querySelectorAll('.ssslack-selected')
+  var iconMap = userIconMap()
 
   return Array.prototype.slice.call(elements).map(function (el) {
     var messageElement = el.parentNode
-    return scrapeMessage(messageElement)
+
+    var message = scrapeMessage(messageElement)
+    return assign(message, { imageUrl: iconMap[message.sender] })
   })
 }
 

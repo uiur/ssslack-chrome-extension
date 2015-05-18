@@ -1,18 +1,10 @@
 var purify = require('dompurify')
 
 module.exports = function scrapeMessage (element) {
-  var imageElement = element.querySelector('.member_image')
-
-  var imageUrl = null
-  if (imageElement) {
-    imageUrl = imageElement.style['background-image'].replace(/(^url\()|(\))$/g, '')
-  }
-
   return {
     content: content(element),
     sender: element.querySelector('.message_sender').textContent.trim(),
-    timestamp: element.querySelector('.timestamp').textContent.trim(),
-    imageUrl: imageUrl
+    timestamp: element.querySelector('.timestamp').textContent.trim()
   }
 }
 
