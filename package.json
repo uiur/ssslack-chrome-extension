@@ -1,24 +1,27 @@
 {
   "name": "ssslack",
+  "title": "ssslack",
+  "id": "jid1-pcUMopPoDENJsg@jetpack",
+  "author": "pastak",
   "version": "0.0.0",
+  "main": "src/main.js",
   "dependencies": {
-    "chrome-clip-copy": "^1.0.0",
+    "urlbarbutton":"pastak/moz-urlbarbutton#support-jpm",
     "dompurify": "^0.6.3",
     "domready": "^1.0.7",
     "object-assign": "^2.0.0",
     "parse": "^1.4.2"
   },
   "devDependencies": {
-    "browserify": "^9.0.8",
-    "standard": "^3.7.0",
-    "watchify": "^3.2.1"
+    "jpm": "^1.0.0",
+    "browserify": "^9.0.8"
   },
   "scripts": {
-    "build": "mkdir -p dist/ && browserify src/content.js > dist/content.js && browserify src/background.js > dist/background.js",
-    "watch": "watchify src/content.js -o dist/content.js -v &\\\n watchify src/background.js -o dist/background.js -v \\\n wait",
-    "test": "standard src/**/*.js"
+    "build": "browserify src/content.js > data/content.js"
   },
-  "engines": {
-    "node": ">=0.10.0"
+  "permissions": {
+    "cross-domain-content": [
+      "https://api.parse.com"
+    ]
   }
 }
