@@ -9,11 +9,16 @@ module.exports = function scrapeMessage (element) {
 }
 
 function content (element) {
-  var html = element.querySelector('.message_content').innerHTML.trim()
+  var html = ''
+  if (element.parentElement.classList.contains('file_upload')) {
+    html = element.querySelector('.msg_inline_holder').innerHTML.trim()
+  } else {
+    html = element.querySelector('.message_content').innerHTML.trim()
+  }
 
   return purify.sanitize(html, {
-    ALLOWED_TAGS: ['a'],
-    ALLOWED_ATTR: ['href'],
+    ALLOWED_TAGS: ['a', 'img'],
+    ALLOWED_ATTR: ['href', 'src'],
     ALLOW_DATA_ATTR: false
   })
 }
