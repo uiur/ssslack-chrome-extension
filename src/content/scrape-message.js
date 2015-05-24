@@ -9,10 +9,11 @@ module.exports = function scrapeMessage (element) {
 }
 
 function content (element) {
-  if(element.parentElement.classList.contains('file_upload')){
-    var html = element.querySelector('.msg_inline_holder').innerHTML.trim()
-  }else{
-    var html = element.querySelector('.message_content').innerHTML.trim()
+  var html = ''
+  if (element.parentElement.classList.contains('file_upload')) {
+    html = element.querySelector('.msg_inline_holder').innerHTML.trim()
+  } else {
+    html = element.querySelector('.message_content').innerHTML.trim()
   }
 
   return purify.sanitize(html, {
