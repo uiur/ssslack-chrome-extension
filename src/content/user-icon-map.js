@@ -2,7 +2,7 @@ function imageUrl (messageElement) {
   var imageElement = messageElement.querySelector('.member_image')
 
   if (imageElement) {
-    return imageElement.style['background-image'].replace(/(^url\()|(\))$/g, '')
+    return imageElement.style['background-image'].replace(/(^url\("?)|("?\))$/g, '')
   } else {
     return null
   }

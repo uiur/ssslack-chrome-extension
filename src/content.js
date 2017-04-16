@@ -1,5 +1,4 @@
 var domready = require('domready')
-var copy = require('chrome-clip-copy')
 var scrapeMessage = require('./content/scrape-message.js')
 var userIconMap = require('./content/user-icon-map.js')
 
@@ -79,8 +78,7 @@ function start () {
     }, {
       success: function (newSnippet) {
         var url = 'https://ssslack.parseapp.com/' + newSnippet.id
-        copy(url)
-        window.open(url)
+        self.port.emit("saved", url);
         finish()
       }
     })
